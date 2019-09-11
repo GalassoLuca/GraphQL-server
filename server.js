@@ -1,7 +1,7 @@
-const express = require('express');
-const express_graphql = require('express-graphql');
-const { buildSchema } = require('graphql');
-const app = express();
+const express = require('express')
+const expressGraphql = require('express-graphql')
+const { buildSchema } = require('graphql')
+const app = express()
 
 const coursesData = [
   {
@@ -30,33 +30,33 @@ const coursesData = [
   }
 ]
 const getCourse = function (args) {
-  const id = args.id;
+  const id = args.id
   return coursesData.filter(course => {
-    return course.id == id;
-  })[0];
+    return course.id == id
+  })[0]
 }
 const getCourses = function (args) {
   if (args.topic) {
-    const topic = args.topic;
-    return coursesData.filter(course => course.topic === topic);
+    const topic = args.topic
+    return coursesData.filter(course => course.topic === topic)
   } else {
-    return coursesData;
+    return coursesData
   }
 }
 const updateCourseTopic = function ({ id, topic }) {
   coursesData.map(course => {
     if (course.id === id) {
-      course.topic = topic;
-      return course;
+      course.topic = topic
+      return course
     }
-  });
-  return coursesData.filter(course => course.id === id)[0];
+  })
+  return coursesData.filter(course => course.id === id)[0]
 }
 
 /**
  * Create an express server and a GraphQL endpoint
  */
-app.use('/graphql', express_graphql({
+app.use('/graphql', expressGraphql({
   // GraphQL schema
   schema: buildSchema(`
         type Query {
@@ -81,26 +81,26 @@ app.use('/graphql', express_graphql({
     updateCourseTopic: updateCourseTopic
   },
   graphiql: true
-}));
+}))
 
 /**
  * API REST with express
  */
 // A GET to the root of a resource returns a list of that resource
 app.get('/api/', function (req, res) {
-  return res.json(getCourses({}));
+  return res.json(getCourses({}))
 })
 
 // We specify a param in our path for the GET of a specific object
 app.get('/api/:id', function (req, res) {
-  return res.json(getCourse(req.params));
+  return res.json(getCourse(req.params))
 })
 
 // Similar to the GET on an object, to update it we can PATCH
 app.post('/api/:id', function (req, res) {
   // TODO get the topic from the request with body-parser
-  req.params.topic = "Node Node Node"
-  return res.json(updateCourseTopic(req.params));
+  req.params.topic = 'Node Node Node'
+  return res.json(updateCourseTopic(req.params))
 })
 
 app.listen(4000, () => {
