@@ -29,12 +29,12 @@ const coursesData = [
     url: 'https://codingthesmartway.com/courses/understand-javascript/'
   }
 ]
+
 const getCourse = function (args) {
   const id = args.id
-  return coursesData.filter(course => {
-    return course.id == id
-  })[0]
+  return coursesData.find(course => course.id === id)
 }
+
 const getCourses = function (args) {
   if (args.topic) {
     const topic = args.topic
@@ -43,6 +43,7 @@ const getCourses = function (args) {
     return coursesData
   }
 }
+
 const updateCourseTopic = function ({ id, topic }) {
   coursesData.map(course => {
     if (course.id === id) {
@@ -50,7 +51,7 @@ const updateCourseTopic = function ({ id, topic }) {
       return course
     }
   })
-  return coursesData.filter(course => course.id === id)[0]
+  return coursesData.find(course => course.id === id)
 }
 
 /**
@@ -59,22 +60,21 @@ const updateCourseTopic = function ({ id, topic }) {
 app.use('/graphql', expressGraphql({
   // GraphQL schema
   schema: buildSchema(`
-        type Query {
-            course(id: Int!): Course
-            courses(topic: String): [Course]
-        },
-        type Mutation {
-            updateCourseTopic(id: Int!, topic: String!): Course
-        }
-        type Course {
-            id: Int
-            title: String
-            author: String
-            description: String
-            topic: String
-            url: String
-        }
-    `),
+    type Query {
+        course(id: Int!): Course
+        courses(topic: String): [Course]
+    },
+    type Mutation {
+        updateCourseTopic(id: Int!, topic: String!): Course
+    }
+    type Course {
+        id: Int
+        title: String
+        author: String
+        description: String
+        topic: String
+        url: String
+    }`),
   rootValue: {
     course: getCourse,
     courses: getCourses,
