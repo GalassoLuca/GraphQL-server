@@ -12,7 +12,7 @@ function getBook ({ id }) {
 
 function getBooks ({ author }) {
   if (author) {
-    return db.filter(book => book.author === author)
+    return db.filter(book => book.author.includes(author))
   }
 
   return db

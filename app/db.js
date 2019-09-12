@@ -1,16 +1,21 @@
 module.exports = [{
   id: 1,
-  title: 'The Complete Node.js Developer Book',
-  author: 'Andrew Mead, Rob Percival',
-  description: 'Learn Node.js by building real-world applications with Node, Express, MongoDB, Mocha, and more!'
+  title: 'The Clean Coder: A Code of Conduct for Professional Programmers ',
+  author: 'Robert C. Martin',
+  description: 'Programming languages and development platforms burst into fashion, and then fade away. Software paradigms briefly dominate, then shift. Methodologies are debated religiously, agreed upon - and soon scrapped altogether. [...]'
 }, {
   id: 2,
-  title: 'Node.js, Express & MongoDB Dev to Deployment',
-  author: 'Brad Traversy',
-  description: 'Learn by example building & deploying real-world Node.js applications from absolute scratch'
+  title: 'Refactoring: Improving the Design of Existing Code',
+  author: 'Martin Fowler',
+  description: 'Refactoring is a controlled technique for improving the design of an existing code base. Its essence is applying a series of small behavior-preserving transformations, each of which "too small to be worth doing" [...]'
 }, {
   id: 3,
-  title: 'JavaScript: Understanding The Weird Parts',
-  author: 'Anthony Alicea',
-  description: 'An advanced JavaScript book for everyone! Scope, closures, prototypes, this, build your own framework, and more.'
+  title: 'Peopleware: Productive Projects and Teams',
+  author: 'Tom DeMarco, Tim Lister',
+  description: 'Peopleware is a popular book about software organization management. The first chapter of the book claims, "The major problems of our work are not so much technological as sociological in nature". The book approaches sociological or \'political\' problems such as group chemistry and team jelling, [...]'
+}, {
+  id: 4,
+  title: 'Learning GraphQL',
+  author: 'Alex Banks, Eve Porcello',
+  description: 'Why is GraphQL the most innovative technology for fetching data since Ajax? By providing a query language for your APIs and a runtime for fulfilling queries with your data, GraphQL presents a clear alternative to REST and ad hoc web service architectures. [...]'
 }]
