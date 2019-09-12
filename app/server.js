@@ -10,7 +10,7 @@ const app = express()
 const { getBook, getBooks, updateBookAuthor } = require('./data-layer')
 
 /**
- * Create an express server and a GraphQL endpoint
+ * Create an GraphQL endpoint with express
  */
 app.use('/graphql', expressGraphql({
   // GraphQL schema
@@ -36,7 +36,7 @@ app.get('/api/:id', function (req, res) {
 
 app.post('/api/:id', function (req, res) {
   // TODO get the author from the request with body-parser
-  req.params.author = 'Node Node Node'
+  req.params.author = 'Martin'
   return res.json(updateBookAuthor(req.params))
 })
 

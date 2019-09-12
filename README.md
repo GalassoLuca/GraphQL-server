@@ -9,7 +9,18 @@ npm start
 ```
 
 ## GraphQL
+
+### end-point
 GraphiQL end point at http://localhost:4000/graphql
+
+### Query from CommandLine
+```bash
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{ "query": "{ books { id } }" }' \
+  http://localhost:4000/graphql
+```
 
 ## API REST
 HTTP GET on http://localhost:4000/api/ to get all the books
