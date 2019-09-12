@@ -1,30 +1,30 @@
 const db = require('./db')
 
 module.exports = {
-  getCourse,
-  getCourses,
-  updateCourseTopic
+  getBook,
+  getBooks,
+  updateBookAuthor
 }
 
-function getCourse ({ id }) {
-  return db.find(course => course.id === id)
+function getBook ({ id }) {
+  return db.find(book => book.id === id)
 }
 
-function getCourses ({ topic }) {
-  if (topic) {
-    return db.filter(course => course.topic === topic)
+function getBooks ({ author }) {
+  if (author) {
+    return db.filter(book => book.author === author)
   }
 
   return db
 }
 
-function updateCourseTopic ({ id, topic }) {
-  db.map(course => {
-    if (course.id === id) {
-      course.topic = topic
-      return course
+function updateBookAuthor ({ id, author }) {
+  db.find(book => {
+    if (book.id === id) {
+      book.author = author
+      return book
     }
   })
 
-  return db.find(course => course.id === id)
+  return db.find(book => book.id === id)
 }

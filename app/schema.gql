@@ -1,15 +1,13 @@
 type Query {
-    course(id: Int!): Course
-    courses(topic: String): [Course]
+    book(id: Int!): Book
+    books(author: String): [Book]
 },
 type Mutation {
-    updateCourseTopic(id: Int!, topic: String!): Course
+    updateBookAuthor(id: Int!, author: String!): Book
 }
-type Course {
+type Book {
     id: Int
     title: String
     author: String
     description: String
-    topic: String
-    url: String
 }
